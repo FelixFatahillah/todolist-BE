@@ -2,10 +2,8 @@ FROM golang:1.20-alpine
 
 WORKDIR /app
 
-COPY . .
-
-RUN go build -o todo-api
+COPY . /app
 
 EXPOSE 3030
 
-CMD ./todo-api
+CMD ["go", "run", "main.go"]
