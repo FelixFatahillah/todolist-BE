@@ -4,7 +4,8 @@ import "gorm.io/gorm"
 
 type Todos struct {
 	gorm.Model
-	ActivityGroupId int
+	ActivityGroupId uint
 	Title string
+	IsActive bool
 	Priority string
 }

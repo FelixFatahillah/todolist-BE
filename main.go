@@ -28,11 +28,11 @@ func main() {
 	r.DELETE("/activity-groups/:id", controllers.DeleteActivityGroups)
 
 	// Todo
-	// r.GET("/todo-items", controllers.GetAllTodoItems)
-    // r.GET("/todo-items/:id", controllers.GetOneTodoItems)
-    // r.POST("/todo-items", controllers.CreateTodoItems)
-    // r.PATCH("/todo-items/:id", controllers.UpdateTodoItems)
-    // r.DELETE("/todo-items/:id", controllers.DeleteTodoItems)
+	r.GET("/todo-items", controllers.GetAllTodoItems)
+    r.GET("/todo-items/:id", controllers.GetOneTodoItems)
+    r.POST("/todo-items", controllers.CreateTodoItems)
+    r.PATCH("/todo-items/:id", controllers.UpdateTodoItems)
+    r.DELETE("/todo-items/:id", controllers.DeleteTodoItems)
 
     log.Fatal(r.Run(":" + port))
 }

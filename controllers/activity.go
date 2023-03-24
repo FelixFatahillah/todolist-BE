@@ -29,8 +29,6 @@ func GetAllActivityGroups(c *gin.Context){
 
 func GetOneActivityGroups(c *gin.Context){
 	var result response.Result
-	fmt.Println(c.Param("id"))
-	fmt.Println("ini", result)
 	if err := config.DB.Table("activities").Where("id = ?", c.Param("id")).First(&result).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
@@ -58,7 +56,6 @@ func CreateActivityGroups(c *gin.Context){
 		Email: input.Email,
 	}
 	config.DB.Create(&activity)
-	fmt.Println(activity.CreatedAt)
 
 	// Create response
 	response := response.Result{
@@ -87,7 +84,7 @@ func UpdateActivityGroups(c *gin.Context){
 		return
 	}
 
-	var input form.Activity
+	var input form.ActivityUpdate
 	if err := c.BindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
